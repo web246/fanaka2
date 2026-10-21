@@ -2,7 +2,7 @@
   "name": "Fanaka Noblewealth Advisory",
   "short_name": "Fanaka Noblewealth",
   "description": "Independent corporate trustee and wealth advisory in Nairobi, Kenya.",
-  "start_url": "/",
+  "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#060B14",
   "theme_color": "#060B14",
