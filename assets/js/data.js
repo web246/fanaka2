@@ -7,7 +7,7 @@ window.FANAKA = {
     phone: '+254 700 000 000',
     phoneHref: 'tel:+254700000000',
     address: ['Noble House, 4th Floor', 'Westlands, Nairobi, Kenya'],
-    logo: 'https://media.base44.com/images/public/user_6a9d56c2d5ea2a490aad6244/02f10f17b_logo.png',
+    logo: 'assets/images/logo.png',
     images: {
       tower: 'https://media.base44.com/images/public/6ad853b685c1917c8d05c1c6/efaffdaf7_generated_db85c923.png',
       boardroom: 'https://media.base44.com/images/public/6ad853b685c1917c8d05c1c6/b7d7cc945_generated_a6de763f.png',

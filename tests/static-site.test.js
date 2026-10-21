@@ -33,8 +33,23 @@ test('all routes are standalone HTML documents using shared vanilla assets', () 
   }
 })
 
+test('the logo and every page use one shared Cinzel font family', () => {
+  const css = fs.readFileSync(path.join(root, 'assets/css/site.css'), 'utf8')
+  assert.match(css, /--body:\s*'Cinzel',\s*Georgia,\s*serif;/)
+  assert.match(css, /--display:\s*'Cinzel',\s*Georgia,\s*serif;/)
+  assert.match(css, /--heading:\s*'Cinzel',\s*Georgia,\s*serif;/)
+  assert.doesNotMatch(css, /'Inter'|'Cormorant Garamond'/)
+  for (const page of pages) {
+    const html = fs.readFileSync(path.join(root, page), 'utf8')
+    assert.doesNotMatch(html, /family=(?:Inter|Cormorant\+Garamond)/, `${page} loads no conflicting font`)
+    assert.match(html, /family=Cinzel/, `${page} loads the logo-matching font`)
+  }
+})
+
 test('site data defines seven unique service routes with required detail copy', () => {
   const data = loadData()
+  assert.equal(data.brand.logo, 'assets/images/logo.png')
+  assert.ok(fs.existsSync(path.join(root, data.brand.logo)), 'local transparent logo exists')
   assert.equal(data.services.length, 7)
   assert.equal(new Set(data.services.map((item) => item.slug)).size, 7)
   for (const service of data.services) {
@@ -57,6 +72,7 @@ test('all static asset links and navigation documents exist', () => {
   assert.match(app, /aria-expanded/)
   assert.match(app, /IntersectionObserver/)
   assert.match(app, /prefers-reduced-motion/)
+  assert.doesNotMatch(app, /theme-toggle|Holy Green &amp; Gold|fanaka-theme/)
 })
 
 test('package scripts build and serve the static files without a framework runtime', () => {
