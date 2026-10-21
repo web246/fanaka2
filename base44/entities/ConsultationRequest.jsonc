@@ -1,0 +1,16 @@
+{
+  "name": "ConsultationRequest",
+  "type": "object",
+  "properties": {
+    "full_name": { "type": "string", "description": "Name of the person requesting the consultation" },
+    "email": { "type": "string", "format": "email", "description": "Email address to confirm the session with" },
+    "phone": { "type": "string", "description": "Phone number to reach the requester on" },
+    "service": { "type": "string", "description": "Service or mandate the consultation is about" },
+    "preferred_date": { "type": "string", "format": "date", "description": "Date the requester would prefer to meet" },
+    "preferred_time": { "type": "string", "description": "Time slot the requester selected" },
+    "meeting_mode": { "type": "string", "enum": ["At our offices", "Virtual meeting", "Phone call"], "description": "How the requester would like to meet" },
+    "message": { "type": "string", "description": "Anything the requester wants us to know before the session" },
+    "status": { "type": "string", "enum": ["new", "contacted", "closed"], "default": "new", "description": "Where the request is in the firm's follow-up" }
+  },
+  "required": ["full_name", "email", "phone", "service"]
+}
